@@ -26,8 +26,18 @@ class CleanTemperatureData(object):
         latitudes = self.dataset.get("Latitudes")
         longitudes = self.dataset.get("Longitudes")
         geometry = [Point(xy) for xy in zip(longitudes, latitudes)]
-        points = gpd.GeoDataFrame(self.dataset, crs = {'init': 'epsg:4326'}, geometry = geometry)
-
+        points = gpd.GeoDataFrame(self.dataset, geometry = geometry)
+        points.crs = self.argentina.crs
+        
         final_df = sjoin(points, self.argentina, how = 'inner', op = 'intersects')
+        
+        # TODO: Temporary fix for now; need to analyze why the sjoin is causing 
+        #       the latitudes and longitudes to flip
+        corrected_points = []
+        for point in final_df["geometry"]:
+            corrected_point = Point(point.y, point.x)
+            corrected_points.append(corrected_point)
+        final_df["geometry"] = corrected_points
+        
         final_df = final_df[["Latitudes", "Longitudes", "Temperature", "geometry"]].reset_index(drop = True)
         final_df.to_csv(self.cleansed_csv_name, index = False)
