@@ -1,4 +1,4 @@
-# Dengue Spread Information System (DSID)
+# Dengue Spread Information System (DSIS)
 
 ## Data 
 
