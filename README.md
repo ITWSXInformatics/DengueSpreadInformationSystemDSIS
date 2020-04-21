@@ -1,5 +1,7 @@
 # Dengue Spread Information System (DSIS)
 
+An information system that describes the change in Dengue cases and environmental factors across various years (month-wise) for *Iquitos, Peru* and *San Juan, Puerto Rico*.
+
 ## Data 
 
 The data files are stored in the data folder. As this work deals with two cities, Iquitos in Peru and San Juan in Puero Rico, the data has been arranged into the respecive folders. Each directory includes:
