@@ -32,15 +32,71 @@
                         </div>
                     </nav>
                     <div class="jumbotron">
-                        <h2>An Early Warning Zika Detection System</h2>
+                        <h2>Dengue Spread Information System (DSIS)</h2>
                     </div>
+                    <br>
+                    <p>The map below depicts the team's dengue information system for the cities of San Juan and Iquitos. 
+                    Please select the year and month of the information for the two cities you'd like to see.
+                    </p>
+                    <form id="updateMap" method="post" action="/">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <select name="month" class="form-control form-control-lg" id="month">
+                                      <option>January</option>
+                                      <option>February</option>
+                                      <option>March</option>
+                                      <option>April</option>
+                                      <option>May</option>
+                                      <option>June</option>
+                                      <option>July</option>
+                                      <option>August</option>
+                                      <option>September</option>
+                                      <option>October</option>
+                                      <option>November</option>
+                                      <option>December</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <select name="year" class="form-control form-control-lg" id="year">
+                                        <option>1990</option>
+                                        <option>1991</option>
+                                        <option>1992</option>
+                                        <option>1993</option>
+                                        <option>1994</option>
+                                        <option>1995</option>
+                                        <option>1996</option>
+                                        <option>1997</option>
+                                        <option>1998</option>
+                                        <option>1999</option>
+                                        <option>2000</option>
+                                        <option>2001</option>
+                                        <option>2002</option>
+                                        <option>2003</option>
+                                        <option>2004</option>
+                                        <option>2005</option>
+                                        <option>2006</option>
+                                        <option>2007</option>
+                                        <option>2008</option>
+                                        <option>2009</option>
+                                        <option>2010</option>
+                                        <option>2011</option>
+                                        <option>2012</option>
+                                        <option>2013</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Submit</button>    
+                            </div>
+                        </div>
+                    </form>
+                    <br>
                     {% include "map.html" %}
-                    <div>
-                        <p>The map displayed above takes into account a variety 
-                        of factors and utilizes machine learning to predict and warn 
-                        individuals of a potential Zika outbreak
-                        </p>
-                    </div>                    
+                    <br>
+                    <br>
                 </div>
                 <div class="col-1">
                 </div>
