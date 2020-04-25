@@ -23,7 +23,10 @@ app.add_url_rule('/images/<path:filename>', endpoint='images', view_func=app.sen
 
 # Constants for the data
 POPULATION_COLUMN = "population"
-TEMPERATURE_COLUMN = "TAVG"
+AVG_SURFACE_TEMPERATURE_COLUMN = "TAVG"
+AVG_AIR_TEMP_COLUMN = "air_temperature"
+AVG_DEW_PNT_TEMP_COLUMN = "dew_point_temperature"
+AVG_RELATIVE_HUMIDITY_COLUMN = "relative_humidity"
 PRECIPITATION_COLUMN = "PRCP"
 CITIES_COLUMN = "place"
 DATE_COLUMN = "date"
@@ -110,25 +113,50 @@ def create_info_marker(data, coordinates, folium_map):
     
     # In case we don't have data for a specific column
     population = "Unknown"
-    temperature = "Unknown"
+    surface_temperature = "Unknown"
     precipitation = "Unknown"
+    air_temp = "Unknown"
+    dew_pnt_temp = "Unknown"
+    relative_humidity = "Unknown"
     
     population_vals = data[POPULATION_COLUMN].values
-    temperature_vals = data[TEMPERATURE_COLUMN].values
+    surf_temperature_vals = data[AVG_SURFACE_TEMPERATURE_COLUMN].values
     precipitation_vals = data[PRECIPITATION_COLUMN].values
+    air_temp_vals = data[AVG_AIR_TEMP_COLUMN].values
+    dew_pnt_temp_vals = data[AVG_DEW_PNT_TEMP_COLUMN].values
+    relative_humidity_vals = data[AVG_RELATIVE_HUMIDITY_COLUMN].values
+
+    if len(surf_temperature_vals) > 0 and not math.isnan(surf_temperature_vals[0]):
+        surface_temperature = convert_temperature_to_fahrenheit(
+                                                                    surf_temperature_vals[0], 
+                                                                    celsius=True
+                                                               )
+    if len(air_temp_vals) > 0 and not math.isnan(air_temp_vals[0]):
+        air_temp = convert_temperature_to_fahrenheit(
+                                                        air_temp_vals[0], 
+                                                        kelvin=True
+                                                    )
+    if len(dew_pnt_temp_vals) > 0 and not math.isnan(dew_pnt_temp_vals[0]):
+        dew_pnt_temp = convert_temperature_to_fahrenheit(
+                                                            dew_pnt_temp_vals[0], 
+                                                            kelvin=True
+                                                        )
     
     if len(population_vals) > 0 and not math.isnan(population_vals[0]):
-        population = data[POPULATION_COLUMN].values[0]
-    
-    if len(temperature_vals) > 0 and not math.isnan(temperature_vals[0]):
-        temperature = data[TEMPERATURE_COLUMN].values[0]
+        population = int(population_vals[0])
         
     if len(precipitation_vals) > 0 and not math.isnan(precipitation_vals[0]):
-        precipitation = data[PRECIPITATION_COLUMN].values[0]
+        precipitation = precipitation_vals[0]
     
-    info_message = f"""Temp: {temperature}\n
-                       Precip: {precipitation}\n
-                       Pop: {population}
+    if len(relative_humidity_vals) > 0 and not math.isnan(relative_humidity_vals[0]):
+        relative_humidity = relative_humidity_vals[0]
+    
+    info_message = f"""Avg Surface Temp: {surface_temperature} F<br>
+                       Avg Air Temp: {air_temp} F<br>
+                       Avg Dew Point Temp: {dew_pnt_temp} F<br>
+                       Total Precipitation: {precipitation} mm<br>
+                       Avg Relative Humidity: {relative_humidity} <br>
+                       Population: {population} <br>
                     """ 
     folium.Marker(
                      location = coordinates,
@@ -170,6 +198,16 @@ def format_for_date_column(month, year):
         month_to_insert = "12"
         
     return f"{year}-{month_to_insert}"
+
+def convert_temperature_to_fahrenheit(degrees, celsius=False, kelvin=False):
+    if (not celsius and not kelvin):
+        return int(degrees)
+    
+    if (celsius):
+       return int(degrees*(9/5) + 32)
+   
+    if (kelvin):
+        return int((degrees - 273.15) * (9/5) + 32)
 
 if __name__ == '__main__':
     app.run(debug=False)
