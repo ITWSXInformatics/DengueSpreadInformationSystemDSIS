@@ -2,6 +2,28 @@
 
 An information system that describes the change in Dengue cases and environmental factors across various years (month-wise) for *Iquitos, Peru* and *San Juan, Puerto Rico*.
 
+## Requirements
+
+- [Python 3.7](https://www.python.org) or Python 3.6
+- [Pipenv](https://docs.pipenv.org)
+
+### Installing
+
+```
+git clone git@github.com:ITWSXInformatics/DengueSpreadInformationAndEarlyWarningSystem.git
+cd DengueSpreadInformationAndEarlyWarningSystem
+pipenv install
+```
+
+### Running 
+
+```
+pipenv shell
+cd MapData
+python main.py
+```
+Then go to localhost:5000 or 127.0.0.1:5000
+
 ## Data 
 
 The data files are stored in the data folder. As this work deals with two cities, Iquitos in Peru and San Juan in Puero Rico, the data has been arranged into the respecive folders. Each directory includes:
