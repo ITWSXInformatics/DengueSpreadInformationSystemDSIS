@@ -59,7 +59,7 @@ def homepage():
     filtered_data = dengue_data[dengue_data[DATE_COLUMN] == date]
     
     # Set the coordinates and zoom so we can see both points
-    start_coords = (-3.7437, -73.2516)
+    start_coords = (10.7437, -73.2516)
     folium_map = folium.Map(location=start_coords, zoom_start=4)
     
     # Add a map layer to allow for a heat map using the GeoJSON we created
@@ -73,7 +73,7 @@ def homepage():
         fill_opacity=0.7,
         line_opacity=0.2,
         legend_name='Number of Dengue Cases',
-        show=False
+        show=True
     ).add_to(folium_map)
     
     folium.LayerControl().add_to(folium_map)
@@ -165,9 +165,10 @@ def create_info_marker(data, coordinates, folium_map):
                        Avg Relative Humidity: {relative_humidity} kg/cubic m<br>
                        Population: {population} <br>
                     """ 
+
     folium.Marker(
                      location = coordinates,
-                     popup = info_message,
+                     popup = folium.Popup(info_message, min_width=5000),
                      icon = folium.Icon(color='blue')
                  ).add_to(folium_map)
 

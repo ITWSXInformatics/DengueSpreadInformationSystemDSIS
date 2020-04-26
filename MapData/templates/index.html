@@ -8,7 +8,7 @@
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </head>
     <body background="{{url_for('static', filename='images/analytics_background.png')}}">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-1">
                 </div>
@@ -34,15 +34,15 @@
                             </ul>
                         </div>
                     </nav>
-                    <div class="jumbotron">
+                    <div>
                         <h2>Dengue Spread Information System (DSIS)</h2>
                     </div>
                     <br>
                     <p>The map below depicts the team's dengue information system for the cities of San Juan and Iquitos. 
-                    Please select the year and month of the information for the two cities you'd like to see.
+                    Please select the year and month of the information for the two cities you'd like to see. You can zoom in on the marker points to view the Choropleth layer of Dengue cases.
                     </p>
                     <form id="updateMap" method="post" action="/">
-                        <div class="row">
+                        <div class="row main-form" style="margin-left:10%; margin-right:10%;">
                             <div class="col">
                                 <div class="form-group">
                                     <select name="month" class="form-control form-control-lg" id="month">
@@ -92,19 +92,24 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-primary">Submit</button>    
+                                <button type="submit" class="btn btn-primary btn-block">Submit</button>    
                             </div>
                         </div>
                     </form>
-                    <br>
                     <h4 style="text-align: center;">{{data.month_selected}}, {{data.year_selected}}</h4>
                     <br>
-                    {% include "map.html" %}
-                    <br>
+                    <div class="map-page" style="width: 80%; height: 50%; margin-left: 10%;">
+                        {% include "map.html" %}
+                    </div>
                     <br>
                 </div>
                 <div class="col-1">
                 </div>
+                <style>.leaflet-popup-content-wrapper {
+                            width: 300px;
+                            height: 130px;
+                        }
+                </style>
             </div>
         </div>
     </body>
