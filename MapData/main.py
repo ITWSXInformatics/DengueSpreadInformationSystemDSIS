@@ -52,7 +52,7 @@ def homepage():
         session.clear()
         session[MONTH_KEY] = str(request.form[MONTH_KEY])
         session[YEAR_KEY] = int(request.form[YEAR_KEY])
-        
+
     # Convert the month and year to the proper format for parsing the dataframe
     date = format_for_date_column(session[MONTH_KEY], session[YEAR_KEY])
     
@@ -88,9 +88,14 @@ def homepage():
     coordinates = [18.4655, -66.1057]
     create_info_marker(san_juan_data, coordinates, folium_map)
     
+    date_selected = {
+                        "month_selected" : session[MONTH_KEY],
+                        "year_selected"  : session[YEAR_KEY]
+                    }
+    
     folium_map.save('templates/map.html')
     
-    return render_template("index.html")
+    return render_template("index.html", data = date_selected)
 
 @app.route('/background')
 def project_background():
@@ -99,6 +104,10 @@ def project_background():
 @app.route('/team')
 def project_members():
     return render_template("the_team.html")
+
+@app.route('/plots')
+def data_plots():
+    return render_template("data_plots.html")
 
 def create_info_marker(data, coordinates, folium_map):
     
@@ -133,13 +142,11 @@ def create_info_marker(data, coordinates, folium_map):
                                                                )
     if len(air_temp_vals) > 0 and not math.isnan(air_temp_vals[0]):
         air_temp = convert_temperature_to_fahrenheit(
-                                                        air_temp_vals[0], 
-                                                        kelvin=True
+                                                        air_temp_vals[0] 
                                                     )
     if len(dew_pnt_temp_vals) > 0 and not math.isnan(dew_pnt_temp_vals[0]):
         dew_pnt_temp = convert_temperature_to_fahrenheit(
-                                                            dew_pnt_temp_vals[0], 
-                                                            kelvin=True
+                                                            dew_pnt_temp_vals[0] 
                                                         )
     
     if len(population_vals) > 0 and not math.isnan(population_vals[0]):
@@ -151,11 +158,11 @@ def create_info_marker(data, coordinates, folium_map):
     if len(relative_humidity_vals) > 0 and not math.isnan(relative_humidity_vals[0]):
         relative_humidity = relative_humidity_vals[0]
     
-    info_message = f"""Avg Surface Temp: {surface_temperature} F<br>
-                       Avg Air Temp: {air_temp} F<br>
-                       Avg Dew Point Temp: {dew_pnt_temp} F<br>
+    info_message = f"""Avg Surface Temp: {surface_temperature} K<br>
+                       Avg Air Temp: {air_temp} K<br>
+                       Avg Dew Point Temp: {dew_pnt_temp} K<br>
                        Total Precipitation: {precipitation} mm<br>
-                       Avg Relative Humidity: {relative_humidity} <br>
+                       Avg Relative Humidity: {relative_humidity} kg/cubic m<br>
                        Population: {population} <br>
                     """ 
     folium.Marker(
@@ -199,15 +206,15 @@ def format_for_date_column(month, year):
         
     return f"{year}-{month_to_insert}"
 
-def convert_temperature_to_fahrenheit(degrees, celsius=False, kelvin=False):
-    if (not celsius and not kelvin):
+def convert_temperature_to_fahrenheit(degrees, celsius=False, farenheit=False):
+    if (not celsius and not farenheit):
         return int(degrees)
     
     if (celsius):
-       return int(degrees*(9/5) + 32)
+       return int(degrees + 273.15)
    
-    if (kelvin):
-        return int((degrees - 273.15) * (9/5) + 32)
+    if (farenheit):
+        return int((degrees - 32) * (5/9) + 273.15)
 
 if __name__ == '__main__':
     app.run(debug=False)
