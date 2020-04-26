@@ -35,79 +35,72 @@
                         </div>
                     </nav>
                     <br>
-                    <div id="karan_profile">
-                        <br>
-                        <h4>Karan Bhanot<h4>
-                        <br>
-                        <p class="font-weight-normal" >
-                            <img src="{{url_for('static', filename='images/karan_profile_pic.jfif')}}" align="top" style="float: left; width: 20%; height: 20%;"/>
-                            <small>Karan, our team lead and PhD student at RPI, has continued lead this project 
-                            as he continues moving forward in his studies. Karan's interests include
-                            machine learning, technical writing and data science
-                            </small>
-                        </p>
-                    </div> 
-                    <div id="dominic_profile">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <h4>Dominic Schroeder<h4>
-                        <br>
-                        <p class="font-weight-normal">
-                            <img src="{{url_for('static', filename='images/dominic_profile_pic.jfif')}}" align="top" style="float: left; width: 22%; height: 20%;"/>
-                            <small>Dominic is a 1st year graduate student at RPI and full-time employee at IBM.
-                            Dominic became interested in the project after speaking to Karan about his past projects
-                            and career goals.
-                            </small>
-                        </p>
-                    </div>        
-                    <div id="isaac_profile">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <h4>Isaac Llewellyn<h4>
-                        <br>
-                        <p class="font-weight-normal">
-                            <img src="{{url_for('static', filename='images/isaac_profile_pic.jfif')}}" align="top" style="float: left; width: 20%; height: 20%;"/>
-                            <small>Isaac is a 3rd year Undergraduate student at RPI whose primary interests include 
-                            Information Security and interesting projects to be a part of.
-                            </small>
-                        </p>
-                    </div>       
-                    <div id="nicholas_profile">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <h4>Nicholas Luczak<h4>
-                        <br>
-                        <p class="font-weight-normal">
-                            <img src="{{url_for('static', filename='images/nicholas_luczak_profile_pic.jpg')}}" align="top" style="float: left; width: 20%; height: 20%;"/>
-                            <small>Nicholas Luczak works as a research technician at Albany Medical Center 
-                            developing Brain-computer interfacing software for the National Center for Adaptive 
-                            Neurotechnologies. He is a second semester senior at RPI and is looking to apply for 
-                            graduate school in the fall.
-                            </small>
-                        </p>
-                    </div>    
-                </div>
-                <div class="col-1">
+                    <div class="row">
+                        <div class="col-md-6" id="dominic_profile">
+                            <h4>Karan Bhanot<h4>
+                            <br>
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="{{url_for('static', filename='images/karan_profile_pic.jfif')}}"
+                                    style="height: 120px; width: 120px; object-fit: cover;"/>
+                                </div>
+                                <div class="col-9">
+                                    <p class="font-weight-normal" >
+                                        <small>Karan, our team lead and PhD student at RPI, has continued lead this project as he continues moving forward in his studies. Karan's interests include machine learning, technical writing and data science
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="dominic_profile">
+                            <h4>Dominic Schroeder<h4>
+                            <br>
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="{{url_for('static', filename='images/dominic_profile_pic.jfif')}}"style="height: 120px; width: 120px; object-fit: cover;"/>
+                                </div>
+                                <div class="col-9">
+                                    <p class="font-weight-normal" >
+                                        <small>Dominic is a 1st year graduate student at RPI and full-time employee at IBM.
+                                        Dominic became interested in the project after speaking to Karan about his past projects and career goals.
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" id="isaac_profile">
+                            <h4>Isaac Llewellyn<h4>
+                            <br>
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="{{url_for('static', filename='images/isaac_profile_pic.jfif')}}" style="height: 120px; width: 120px; object-fit: cover;"/>
+                                </div>
+                                <div class="col-9">
+                                    <p class="font-weight-normal" >
+                                        <small>Isaac is a 3rd year Undergraduate student at RPI whose primary interests include Information Security and interesting projects to be a part of.
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="nicholas_profile">
+                            <h4>Nicholas Luczak<h4>
+                            <br>
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="{{url_for('static', filename='images/nicholas_luczak_profile_pic.jpg')}}" style="height: 120px; width: 120px; object-fit: cover;"/>
+                                </div>
+                                <div class="col-9">
+                                    <p class="font-weight-normal" >
+                                        <small>Nicholas Luczak works as a research technician at Albany Medical Center developing Brain-computer interfacing software for the National Center for Adaptive Neurotechnologies. He is a second semester senior at RPI and is looking to apply for graduate school in the fall.
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
