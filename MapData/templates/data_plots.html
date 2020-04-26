@@ -40,9 +40,16 @@
                         <small>As mentioned in the background page, the team began to analyze the number of Dengue
                         cases in the cities of Iquitos, Peru and San Juan, Puerto Rico. The team took into account
                         a variety of factors such as, variations in air temperature, surface temperature, humidity
-                        and many more. 
+                        and many more. As we can see from the number of dengue cases vs the various factors we can
+                        assume the factors that correlate the most is the population, surface temperature and 
+                        air temperature.
                         </small>
                     </p>
+                    <br>
+                    <h4>Total Number of Dengue Cases in San Juan and Iquitos</h4>
+                    <div id="dengue_cases_plot">
+                        <img src="{{url_for('static', filename='images/total_dengue_cases.png')}}" align="top" style="float: left; width: 100%; height: 100%;"/>
+                    </div>                     
                     <br>
                     <h4>Iquitos Dengue Analysis Plots</h4>
                     <div id="iquitos_air_temperature_plot">
