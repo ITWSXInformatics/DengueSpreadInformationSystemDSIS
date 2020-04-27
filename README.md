@@ -5,18 +5,32 @@ An information system that describes the change in Dengue cases and environmenta
 ## Requirements
 
 - [Python 3.7](https://www.python.org) or Python 3.6
-- [Pipenv](https://docs.pipenv.org)
 
-### Installing
+## Installing
 
+Using requirements.txt
+```
+git clone git@github.com:ITWSXInformatics/DengueSpreadInformationAndEarlyWarningSystem.git
+cd DengueSpreadInformationAndEarlyWarningSystem
+pip3 install -r requirements.txt
+```
+
+Using pipenv
 ```
 git clone git@github.com:ITWSXInformatics/DengueSpreadInformationAndEarlyWarningSystem.git
 cd DengueSpreadInformationAndEarlyWarningSystem
 pipenv install
 ```
 
-### Running 
+## Running 
 
+Without virtual environment
+```
+cd MapData
+python3 main.py
+```
+
+Using pipenv
 ```
 pipenv shell
 cd MapData
@@ -31,5 +45,6 @@ The data files are stored in the data folder. As this work deals with two cities
 - **data/<CITY_NAME>/population_data.csv:** contains the estimated population of the city for the year
 - **data/<CITY_NAME>/environment_data.csv:** contains environmental information including precipitation and temperature
 - **data/<CITY_NAME>/combined_data.csv:** combines all the data sources above using some preprocessing and creates a common CSV file.
+- **data/<CITY_NAME>/temperature_humidity_data.xlsx:** contains air temperature and humidity values for the city.
 
 There is also the **data/complete_data.csv** file which includes the data from all the files for both cities in one file.
