@@ -48,3 +48,7 @@ The data files are stored in the data folder. As this work deals with two cities
 - **data/<CITY_NAME>/temperature_humidity_data.xlsx:** contains air temperature and humidity values for the city.
 
 There is also the **data/complete_data.csv** file which includes the data from all the files for both cities in one file.
+
+#### Original data source
+
+The data is taken from the [Dengue forecasting GitHub repository](https://github.com/cdcepi/dengue-forecasting-project-2015) containing environmental and Dengue data from NOAA and CDC.
