@@ -101,9 +101,9 @@ def homepage():
 def project_background():
     return render_template("background.html")
 
-@app.route('/team')
+@app.route('/contacts')
 def project_members():
-    return render_template("the_team.html")
+    return render_template("contacts.html")
 
 @app.route('/plots')
 def data_plots():
@@ -153,10 +153,10 @@ def create_info_marker(data, coordinates, folium_map):
         population = int(population_vals[0])
         
     if len(precipitation_vals) > 0 and not math.isnan(precipitation_vals[0]):
-        precipitation = precipitation_vals[0]
+        precipitation = round(precipitation_vals[0],2)
     
     if len(relative_humidity_vals) > 0 and not math.isnan(relative_humidity_vals[0]):
-        relative_humidity = relative_humidity_vals[0]
+        relative_humidity = round(relative_humidity_vals[0],2)
     
     info_message = f"""Avg Surface Temp: {surface_temperature} K<br>
                        Avg Air Temp: {air_temp} K<br>
