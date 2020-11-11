@@ -61,7 +61,7 @@ def homepage():
     # Set the coordinates and zoom so we can see both points
     start_coords = (10.7437, -73.2516)
     folium_map = folium.Map(location=start_coords, zoom_start=4)
-    
+
     # Add a map layer to allow for a heat map using the GeoJSON we created
     folium.Choropleth(
         geo_data="iquitos_san_juan_geo.json",
@@ -108,6 +108,10 @@ def project_members():
 @app.route('/plots')
 def data_plots():
     return render_template("data_plots.html")
+
+@app.route('/map')
+def show_map():
+    return render_template('map.html')
 
 def create_info_marker(data, coordinates, folium_map):
     
@@ -166,9 +170,8 @@ def create_info_marker(data, coordinates, folium_map):
                        Population: {population} <br>
                     """ 
 
-    folium.Marker(
-                     location = coordinates,
-                     popup = folium.Popup(info_message, min_width=5000),
+    folium.Marker(location = coordinates,
+                     popup = folium.Popup(info_message, max_width=250,min_width=250),
                      icon = folium.Icon(color='blue')
                  ).add_to(folium_map)
 

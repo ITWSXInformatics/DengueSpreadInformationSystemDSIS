@@ -2,95 +2,70 @@
 <html lang="en" dir="ltr">
     <head>
        <meta charset="utf-8">
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
-    <body background="{{url_for('static', filename='images/analytics_background.png')}}">
-        <div class="container-fluid">
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="navbar-brand">Dengue Spread Information System</div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/background">Background</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" href="/plots">Risk Plot Analysis</a>
+                    </li>    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contacts">About</a>
+                    </li>        
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
             <div class="row">
-                <div class="col-1">
+                <div class="col-12 pt-4">
+                    <h3>Dengue Spread Information System (DSIS)</h3>
+                    <p>
+                        Dengue Spread Information System is a web application developed to highlight the spread of Dengue across Iquitos, Peru and San Juan, Puerto Rico from 1990 to 2013. The application includes an interactive map and several static risk factor plots that might explain the spread of Dengue across a region.
+                    </p>
                 </div>
-                <div class="col-10" style="background-color:white; min-height:100vh; overflow:auto;">
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/">Home</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="/background">Background<span class="sr-only">(current)</span> </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/plots">Data Analysis and Visualization</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/contacts">Contacts</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <br>
-                    <div id="teams_purpose">
-                        <br>
-                        <h4>Our purpose<h4>
-                        <br>
-                        <p class="font-weight-normal" >
-                            <img src="{{url_for('static', filename='images/dengue_cases.png')}}" align="top" style="float: left; width: 40%; height: 50%;"/>
-                            <small>Many cities have their fair share of problems but,
-                            none are more annoying to the country’s citizens and visitors as mosquitos. 
-                            Mosquitos while a pest are far more terrifying than most people realize. Not 
-                            only do these insects suck blood from victims but, they carry with them a wide 
-                            range of diseases. One of these diseases, Dengue, became rampant in 
-                            2007 and 2008 in Iquitos, Peru and San Juan, Puerto Rico. As a result, the team decided 
-                            to create an Information System to help visualize and analyze the factors in these two
-                            cities. 
-                            </small>
-                        </p>
-                    </div> 
-                    <div id="dengue_factors">
-                        <br>
-                        <h4>Factors impacting the spread of Dengue<h4>
-                        <br>
-                        <p class="font-weight-normal">
-                            <small>There are many factors that play a role in determining how many individuals
-                            become infected with Dengue. The primary factor though is the mosquito population
-                            and the factors that promote the an increase in the population of the mosquitos
-                            in Dengue. The factors include the following:
-                                <ol>
-                                    <li>Standing bodies of water</li>
-                                    <li>The temperature</li>
-                                    <li>Cloud coverage</li>
-                                    <li>Population density</li>
-                                </ol>
-                            </small>
-                        </p>
-                    </div>        
-                    <div id="more_information">
-                        <br>
-                        <h4>More Information<h4>
-                        <br>
-                        <p class="font-weight-normal">
-                            <small>
-                                For those interested in reading more about the Dengue virus 
-                                and mosquitos please click on any of the images below.
-                            </small>
-                        </p>
-                        <a href="https://www.cdc.gov/dengue/index.html">
-                            <img src="{{url_for('static', filename='images/cdc_logo.jpg')}}" style="float: left; width: 20%; height: 20%;"/>
-                        </a>
-                        <a href="https://www.iamat.org/risks/dengue">
-                            <img src="{{url_for('static', filename='images/iamat_logo.jpg')}}" style="float: right; width: 50%; height: 50%;"/>
-                        </a>
-                    </div>           
+            </div>
+            <div class="row">
+                <div class="col-md-4 pt-4">
+                    <img src="{{url_for('static', filename='images/dengue_cases.png')}}" style="width: 100%;"/>
+                    <h6 class="text-center pt-2">Mosquito-borne disease (Chikungunya) spread<br>(Source: <a href="http://outbreaknewstoday.com/chikungunya-outpacing-dengue-fever-cases-in-puerto-rico-this-year-64829/">Outbreak News Today</a>)</h6>
                 </div>
-                <div class="col-1">
+                <div class="col-md-8">
+                    <p>
+                        Many cities have their fair share of problems but none are more annoying to the country’s citizens and visitors as mosquitos. Mosquitos while a pest are far more terrifying than most people realize. Not only do these insects suck blood from victims but they carry with them a wide range of diseases. The figure on the right shows the spread of Chikungunya, a mosquito-borne disease spreading across Puerto Rico (Source: <a href="http://outbreaknewstoday.com/chikungunya-outpacing-dengue-fever-cases-in-puerto-rico-this-year-64829/">Outbreak News Today</a>). On the similar lines, one of these mosquito-borne diseases, Dengue, became rampant in 2007 and 2008 in Iquitos, Peru and San Juan, Puerto Rico.
+                        <br><br>
+                        Thus, to understand the spread of Dengue and associated risk factors, the <strong>Dengue Spread Information System (DSIS)</strong> was created as a system to help visualize and analyze several Dengue risk factors in these two cities. The aim is to enable researchers and policymakers alike to understand Dengue spread and develop policies aroung them.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Risk Factors impacting the spread of Dengue</h3>
+                    <p>
+                        There are many factors that play a role in determining how many individuals become infected with Dengue. The primary factor though is the mosquito population and the factors that promote the an increase in the population of the mosquitos in Dengue. The factors include the following (Source: <a href="https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue">WHO</a>, <a href="https://www.cdc.gov/dengue/index.html">CDC</a> and <a href="https://www.iamat.org/risks/dengue">IAMAT</a>):
+                        <ol>
+                            <li>Standing bodies of water</li>
+                            <li>The temperature</li>
+                            <li>Cloud coverage</li>
+                            <li>Population density</li>
+                        </ol>
+                    </p>
                 </div>
             </div>
         </div>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     </body>
 </html>
