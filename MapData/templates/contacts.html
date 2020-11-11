@@ -7,8 +7,26 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
+        <div class="modal" tabindex="-1" role="dialog" id="disclaimerModal" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Welcome to Dengue Spread Information System (DSIS)</h5>
+              </div>
+              <div class="modal-body">
+                <p>WARNING: DSIS represents experimental, student-created work. Reasonable effort has been made to provide a safe, informative, enjoyable user experience, but some features may not comply with Web Content Accessibility Guidelines (WCAG). USE AT YOUR OWN RISK.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue with DSIS app</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="navbar-brand">Dengue Spread Information System</div>
+            <div class="navbar-brand">
+                <span class="d-lg-none d-md-none">DSIS</span>
+                <span class="d-none d-md-block">Dengue Spread Information System</span>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,14 +57,14 @@
                 </div>
             </div>
             <div class="row pt-4 pb-2">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h4>Karan Bhanot</h4>
                     <div class="row pt-2">
-                        <div class="col-3">
+                        <div class="col-md-3">
                             <img src="{{url_for('static', filename='images/karan_profile_pic.jfif')}}"
                             style="height: 120px; width: 120px; object-fit: cover;"/>
                         </div>
-                        <div class="col-9">
+                        <div class="col-md-9">
                             <p>
                                 Karan, our team lead and PhD student at RPI, has continued lead this project as he continues moving forward in his studies. Karan's interests include machine learning, technical writing and data science.<br>
                                 Email: <a href="mailto:bhanotkaran22@gmail.com">bhanotkaran22@gmail.com</a>
@@ -54,14 +72,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h4>Dominic Schroeder</h4>
                     <div class="row pt-2">
-                        <div class="col-3">
+                        <div class="col-md-3">
                             <img src="{{url_for('static', filename='images/dominic_profile_pic.jfif')}}"
                             style="height: 120px; width: 120px; object-fit: cover;"/>
                         </div>
-                        <div class="col-9">
+                        <div class="col-md-9">
                             <p>
                                 Dominic is a 1st year graduate student at RPI and full-time employee at IBM. Dominic became interested in the project after speaking to Karan about his past projects and career goals.<br>
                                 Email: <a href="mailto:Dominic.Schroeder@ibm.com">Dominic.Schroeder@ibm.com</a>
@@ -71,14 +89,14 @@
                 </div>
             </div>
             <div class="row pt-2 pb-2">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h4>Isaac Llewellyn</h4>
                     <div class="row pt-2">
-                        <div class="col-3">
+                        <div class="col-md-3">
                             <img src="{{url_for('static', filename='images/isaac_profile_pic.jfif')}}"
                             style="height: 120px; width: 120px; object-fit: cover;"/>
                         </div>
-                        <div class="col-9">
+                        <div class="col-md-9">
                             <p>
                                 Isaac is a 3rd year Undergraduate student at RPI whose primary interests include Information Security and interesting projects to be a part of.<br>
                                 Email: <a href="mailto:llewei@rpi.edu">llewei@rpi.edu</a>
@@ -86,14 +104,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h4>Nicholas Luczak</h4>
                     <div class="row pt-2">
-                        <div class="col-3">
+                        <div class="col-md-3">
                             <img src="{{url_for('static', filename='images/nicholas_luczak_profile_pic.jpg')}}"
                             style="height: 120px; width: 120px; object-fit: cover;"/>
                         </div>
-                        <div class="col-9">
+                        <div class="col-md-9">
                             <p>
                                 Nicholas Luczak works as a research technician at Albany Medical Center developing Brain-computer interfacing software for the National Center for Adaptive Neurotechnologies. He is a second semester senior at RPI and is looking to apply for graduate school in the fall. <br>
                                 Email: <a href="mailto:luczan@rpi.edu">luczan@rpi.edu</a>
@@ -105,5 +123,13 @@
         </div>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                if (!sessionStorage.getItem("disclaimer")) {
+                    $("#disclaimerModal").modal('show');
+                    sessionStorage.setItem("disclaimer", true);
+                }
+            });
+        </script>
     </body>
 </html>

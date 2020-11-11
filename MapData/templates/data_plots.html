@@ -7,6 +7,21 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
+        <div class="modal" tabindex="-1" role="dialog" id="disclaimerModal" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Welcome to Dengue Spread Information System (DSIS)</h5>
+              </div>
+              <div class="modal-body">
+                <p>WARNING: DSIS represents experimental, student-created work. Reasonable effort has been made to provide a safe, informative, enjoyable user experience, but some features may not comply with Web Content Accessibility Guidelines (WCAG). USE AT YOUR OWN RISK.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue with DSIS app</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="navbar-brand">
                 <span class="d-lg-none d-md-none">DSIS</span>
@@ -126,6 +141,13 @@
                         </div>';
             }
             $('#san_juan').html(plots);
+
+            $(document).ready(function(){
+                if (!sessionStorage.getItem("disclaimer")) {
+                    $("#disclaimerModal").modal('show');
+                    sessionStorage.setItem("disclaimer", true);
+                }
+            });
         </script>
     </body>
 </html>

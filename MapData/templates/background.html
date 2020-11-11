@@ -7,8 +7,26 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
+        <div class="modal" tabindex="-1" role="dialog" id="disclaimerModal" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Welcome to Dengue Spread Information System (DSIS)</h5>
+              </div>
+              <div class="modal-body">
+                <p>WARNING: DSIS represents experimental, student-created work. Reasonable effort has been made to provide a safe, informative, enjoyable user experience, but some features may not comply with Web Content Accessibility Guidelines (WCAG). USE AT YOUR OWN RISK.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue with DSIS app</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="navbar-brand">Dengue Spread Information System</div>
+            <div class="navbar-brand">
+                <span class="d-lg-none d-md-none">DSIS</span>
+                <span class="d-none d-md-block">Dengue Spread Information System</span>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -68,5 +86,13 @@
         </div>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                if (!sessionStorage.getItem("disclaimer")) {
+                    $("#disclaimerModal").modal('show');
+                    sessionStorage.setItem("disclaimer", true);
+                }
+            });
+        </script>
     </body>
 </html>
