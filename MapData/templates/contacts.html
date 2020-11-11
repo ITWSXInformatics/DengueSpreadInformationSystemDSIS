@@ -2,115 +2,107 @@
 <html lang="en" dir="ltr">
     <head>
        <meta charset="utf-8">
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
-    <body background="{{url_for('static', filename='images/analytics_background.png')}}">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-1">
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="navbar-brand">Dengue Spread Information System</div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/background">Background</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" href="/plots">Risk Plot Analysis</a>
+                    </li>    
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/contacts">About</a>
+                    </li>        
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row pt-4 pb-2">
+                <div class="col-12">
+                    <h3>About</h3>
+                    <p>
+                        This project was initiated as part of the X-Informatics course at Rensselaer Polytechnic Institute during Spring 2020. The project, under the guidance of Prof. Thilanka Munasinghe, was developed as a Python based (Flask) application and later compiled into a published research. The paper was submitted to <a href="http://www.icmhi.org/ICMHI2020.html">ICMHI 2020</a> and is available via <a href="https://dl.acm.org/doi/10.1145/3418094.3418133">ACM</a>.
+                    </p>
                 </div>
-                <div class="col-10" style="background-color:white; min-height:100vh; overflow:auto;">
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/background">Background<span class="sr-only">(current)</span> </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/plots">Data Analysis and Visualization</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="/contacts">Contacts<span class="sr-only">(current)</span></a>
-                                </li>
-                            </ul>
+            </div>
+            <div class="row pt-4 pb-2">
+                <div class="col-md-6">
+                    <h4>Karan Bhanot</h4>
+                    <div class="row pt-2">
+                        <div class="col-3">
+                            <img src="{{url_for('static', filename='images/karan_profile_pic.jfif')}}"
+                            style="height: 120px; width: 120px; object-fit: cover;"/>
                         </div>
-                    </nav>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6" id="dominic_profile">
-                            <h4>Karan Bhanot<h4>
-                            <br>
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="{{url_for('static', filename='images/karan_profile_pic.jfif')}}"
-                                    style="height: 120px; width: 120px; object-fit: cover;"/>
-                                </div>
-                                <div class="col-9">
-                                    <p class="font-weight-normal" >
-                                        <small>Karan, our team lead and PhD student at RPI, has continued lead this project as he continues moving forward in his studies. Karan's interests include machine learning, technical writing and data science
-                                        <br>
-                                        Email: <a href="mailto:bhanotkaran22@gmail.com">Karan Bhanot</a>
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" id="dominic_profile">
-                            <h4>Dominic Schroeder<h4>
-                            <br>
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="{{url_for('static', filename='images/dominic_profile_pic.jfif')}}"style="height: 120px; width: 120px; object-fit: cover;"/>
-                                </div>
-                                <div class="col-9">
-                                    <p class="font-weight-normal" >
-                                        <small>Dominic is a 1st year graduate student at RPI and full-time employee at IBM.
-                                        Dominic became interested in the project after speaking to Karan about his past projects and career goals.
-                                        <br>
-                                        Email: <a href="mailto:Dominic.Schroeder@ibm.com">Dominic Schroeder</a>
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
+                        <div class="col-9">
+                            <p>
+                                Karan, our team lead and PhD student at RPI, has continued lead this project as he continues moving forward in his studies. Karan's interests include machine learning, technical writing and data science.<br>
+                                Email: <a href="mailto:bhanotkaran22@gmail.com">bhanotkaran22@gmail.com</a>
+                            </p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6" id="isaac_profile">
-                            <h4>Isaac Llewellyn<h4>
-                            <br>
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="{{url_for('static', filename='images/isaac_profile_pic.jfif')}}" style="height: 120px; width: 120px; object-fit: cover;"/>
-                                </div>
-                                <div class="col-9">
-                                    <p class="font-weight-normal" >
-                                        <small>Isaac is a 3rd year Undergraduate student at RPI whose primary interests include Information Security and interesting projects to be a part of.
-                                        <br>
-                                        Email: <a href="mailto:llewei@rpi.edu">Isaac Llewellyn</a>
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Dominic Schroeder</h4>
+                    <div class="row pt-2">
+                        <div class="col-3">
+                            <img src="{{url_for('static', filename='images/dominic_profile_pic.jfif')}}"
+                            style="height: 120px; width: 120px; object-fit: cover;"/>
                         </div>
-                        <div class="col-md-6" id="nicholas_profile">
-                            <h4>Nicholas Luczak<h4>
-                            <br>
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="{{url_for('static', filename='images/nicholas_luczak_profile_pic.jpg')}}" style="height: 120px; width: 120px; object-fit: cover;"/>
-                                </div>
-                                <div class="col-9">
-                                    <p class="font-weight-normal" >
-                                        <small>Nicholas Luczak works as a research technician at Albany Medical Center developing Brain-computer interfacing software for the National Center for Adaptive Neurotechnologies. He is a second semester senior at RPI and is looking to apply for graduate school in the fall.
-                                        <br>
-                                        Email: <a href="mailto:Nicholas Luczak">Nicholas Luczak</a>
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
+                        <div class="col-9">
+                            <p>
+                                Dominic is a 1st year graduate student at RPI and full-time employee at IBM. Dominic became interested in the project after speaking to Karan about his past projects and career goals.<br>
+                                Email: <a href="mailto:Dominic.Schroeder@ibm.com">Dominic.Schroeder@ibm.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-2 pb-2">
+                <div class="col-md-6">
+                    <h4>Isaac Llewellyn</h4>
+                    <div class="row pt-2">
+                        <div class="col-3">
+                            <img src="{{url_for('static', filename='images/isaac_profile_pic.jfif')}}"
+                            style="height: 120px; width: 120px; object-fit: cover;"/>
+                        </div>
+                        <div class="col-9">
+                            <p>
+                                Isaac is a 3rd year Undergraduate student at RPI whose primary interests include Information Security and interesting projects to be a part of.<br>
+                                Email: <a href="mailto:llewei@rpi.edu">llewei@rpi.edu</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Nicholas Luczak</h4>
+                    <div class="row pt-2">
+                        <div class="col-3">
+                            <img src="{{url_for('static', filename='images/nicholas_luczak_profile_pic.jpg')}}"
+                            style="height: 120px; width: 120px; object-fit: cover;"/>
+                        </div>
+                        <div class="col-9">
+                            <p>
+                                Nicholas Luczak works as a research technician at Albany Medical Center developing Brain-computer interfacing software for the National Center for Adaptive Neurotechnologies. He is a second semester senior at RPI and is looking to apply for graduate school in the fall. <br>
+                                Email: <a href="mailto:luczan@rpi.edu">luczan@rpi.edu</a>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     </body>
 </html>
