@@ -1,6 +1,9 @@
 # Dengue Spread Information System (DSIS)
 
 An information system that describes the change in Dengue cases and environmental factors across various years (month-wise) for *Iquitos, Peru* and *San Juan, Puerto Rico*.
+The project is now published as a research paper and can be found [here](https://dl.acm.org/doi/10.1145/3418094.3418133).
+
+**NOTE:** Recently, the application was updated to make it more streamlined and thus, the images used in the paper might not exactly match with the application. However, the content has just been tweaked and has not been removed completely.
 
 ## Requirements
 
