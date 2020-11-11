@@ -8,49 +8,44 @@
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </head>
     <body background="{{url_for('static', filename='images/analytics_background.png')}}">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/" style="font-weight: bold;">DSIS</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/background">Background</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/plots">Data Analysis and Visualization</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contacts">Contacts</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12" style="background-color:white; min-height:100vh;">
-                    <div class="row">
-                        <div class="col-md-1">
+                <div class="col-1">
+                </div>
+                <div class="col-10" style="background-color:white; min-height:100vh; overflow: auto;">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/background">Background</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/plots">Data Analysis and Visualization</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contacts">Contacts</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-md-10 text-center pt-4 pb-2">
-                            <h2>Dengue Spread Information System (DSIS)</h2>
-                            <p class="text-left">
-                                Dengue Spread Information System is a web application developed to highlight the spread of Dengue across Iquitos, Peru and San Juan, Puerto Rico from 1990 to 2013. The application includes an interactive map and several static risk factor plots that might explain the spread of Dengue across a region.<br><br>
-                                The map below depicts the an interactive visualization for the Dengue cases for Iquitos and San Juan. Please select the year and month of the information for the two cities you'd like to see. You can zoom in on the markers to view the Choropleth layer of Dengue cases.
-                            </p>
-                        </div>
-                        <div class="col-md-1">
-                        </div>
+                    </nav>
+                    <div>
+                        <h2>Dengue Spread Information System (DSIS)</h2>
                     </div>
+                    <br>
+                    <p>The map below depicts the team's dengue information system for the cities of San Juan and Iquitos. 
+                    Please select the year and month of the information for the two cities you'd like to see. You can zoom in on the marker points to view the Choropleth layer of Dengue cases.
+                    </p>
                     <form id="updateMap" method="post" action="/">
                         <div class="row main-form" style="margin-left:10%; margin-right:10%;">
-                            <div class="col-md-4">
+                            <div class="col">
                                 <div class="form-group">
-                                    <select name="month" class="form-control" id="month">
+                                    <select name="month" class="form-control form-control-lg" id="month">
                                       <option>January</option>
                                       <option>February</option>
                                       <option>March</option>
@@ -66,9 +61,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col">
                                 <div class="form-group">
-                                    <select name="year" class="form-control" id="year">
+                                    <select name="year" class="form-control form-control-lg" id="year">
                                         <option>1990</option>
                                         <option>1991</option>
                                         <option>1992</option>
@@ -96,7 +91,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col">
                                 <button type="submit" class="btn btn-primary btn-block">Submit</button>    
                             </div>
                         </div>
@@ -107,6 +102,8 @@
                         {% include "map.html" %}
                     </div>
                     <br>
+                </div>
+                <div class="col-1">
                 </div>
                 <style>.leaflet-popup-content-wrapper {
                             width: 300px;
