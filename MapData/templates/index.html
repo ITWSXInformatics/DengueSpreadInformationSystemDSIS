@@ -33,8 +33,9 @@
             <div class="row">
                 <div class="col-md-12 pt-4 pb-2">
                     <h3>Spread of Dengue across years</h3>
+                    <h5>Interactive visualization for the Dengue cases in Iquitos and San Juan</h5>
                     <p class="text-justify">
-                        The map below depicts the an interactive visualization for the Dengue cases in Iquitos and San Juan. Select the month and year for which you want the information to be shown. You can zoom in on the markers to view the Choropleth layer of Dengue cases as well as click on them to reveal further information.
+                        Select the <strong>month</strong> and <strong>year</strong> for which you want the information to be shown. You can <strong>zoom in</strong> on the markers to view the Choropleth layer of Dengue cases as well as click on them to reveal further information.
                     </p>
                 </div>
             </div>
@@ -43,8 +44,15 @@
                     <form id="updateMap" method="post" action="/">
                         <div class="row">
                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <select name="month" class="form-control" id="month"></select>
+                                </div>
                             </div>
                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <select name="year" class="form-control" id="year">
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary btn-block">Submit</button>    
@@ -53,8 +61,41 @@
                     </form>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h5 class="text-center">Dengue Spread for {{data.month_selected}}, {{data.year_selected}}</h5>
+                    <iframe src="{{url_for('show_map')}}" scrolling="no" style="width:100%; height: 50vh" frameborder="0"></iframe>
+                </div>
+            </div>
         </div>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            // Set up options for months
+            var select = '';
+            var months = ["January", "February", "March", "April", "May", "June", "July",
+                          "August", "September", "October", "November", "December"];
+            for (i = 0; i < 12; i++) {
+                var selected = '{{data.month_selected}}';
+                if (selected == months[i]) {
+                    select += '<option val=' + months[i] + ' selected>'  + months[i] + '</option>';
+                } else {
+                    select += '<option val=' + months[i] + '>'  + months[i] + '</option>';
+                }
+            }
+            $('#month').html(select);
+
+            // Set up options for years
+            select = '';
+            for (i = 1990; i < 2014; i++) {
+                var selected = '{{data.year_selected}}';
+                if (selected == i) {
+                    select += '<option val=' + i + ' selected>'  + i + '</option>';
+                } else {
+                    select += '<option val=' + i + '>'  + i + '</option>';
+                }
+            }
+            $('#year').html(select);
+        </script>
     </body>
 </html>
